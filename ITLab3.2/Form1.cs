@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TagLib;
 
 namespace ITLab3._2
 {
@@ -20,12 +21,26 @@ namespace ITLab3._2
         private void open_Click(object sender, EventArgs e)
         {
             var dialog = new OpenFileDialog();
-            dialog.Filter = "Video files (*.wmv;*.avi;*.mp4)|*.wmv;*.avi;*.mp4|All files (*.*)|*.*";
+            dialog.Filter = "Windows Media Video (*.wmv)|*.wmv|All files (*.*)|*.*";
             dialog.FilterIndex = 1;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var filename = dialog.FileName;
                 files.Items.Add(filename);
+
+                try
+                {
+                    var file = TagLib.File.Create(filename);
+                    int width = file.Properties.VideoWidth;
+                    int height = file.Properties.VideoHeight;
+
+                    // Показываем информацию (временно)
+                    MessageBox.Show($"Размер видео: {width}x{height}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка чтения метаданных: {ex.Message}");
+                }
             }
         }
 
@@ -47,6 +62,24 @@ namespace ITLab3._2
 
             player.currentPlaylist = playlist;
             player.Ctlcontrols.play();
+            statusLabel.Text = $"Воспроизведение: {playlist.count} файлов";
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            player.Ctlcontrols.stop();
+            player.close();
+            statusLabel.Text = "Воспроизведение остановлено";
+        }
+
+        private void files_DoubleClick(object sender, EventArgs e)
+        {
+            if (files.SelectedItem != null)
+            {
+                string filename = files.SelectedItem.ToString();
+                player.URL = filename;
+                player.Ctlcontrols.play();
+            }
         }
     }
 }
