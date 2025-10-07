@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="aero" Class="AeroDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GLAUZI\SQLEXPRESS;Initial Catalog=aero;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="ITLab3._2.Properties.Settings" SettingsPropertyName="aeroConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Video" Member="Video">
+    <Type Name="Video">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Filename" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Height" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

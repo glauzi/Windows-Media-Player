@@ -34,12 +34,22 @@ namespace ITLab3._2
                     int width = file.Properties.VideoWidth;
                     int height = file.Properties.VideoHeight;
 
-                    // Показываем информацию (временно)
-                    MessageBox.Show($"Размер видео: {width}x{height}");
+                    var db = new AeroDataContext();
+                    var videoData = new Video
+                    {
+                        Filename = filename,
+                        Width = width,
+                        Height = height
+                    };
+
+                    db.Video.InsertOnSubmit(videoData);
+                    db.SubmitChanges();
+
+                    statusLabel.Text = $"Добавлено: {width}x{height} (ID: {videoData.Id})";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка чтения метаданных: {ex.Message}");
+                    MessageBox.Show($"Ошибка: {ex.Message}");
                 }
             }
         }

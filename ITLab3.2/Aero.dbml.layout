@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Aero">
+  <DataContextMoniker Name="/AeroDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a64282c4-a98f-465f-bbc3-19d23627f28f" absoluteBounds="3.125, 2.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/AeroDataContext/Video" />
+      <nestedChildShapes>
+        <elementListCompartment Id="462639e0-9029-49de-b69b-5494d9abd471" absoluteBounds="3.14, 2.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
